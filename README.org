@@ -1,0 +1,9 @@
+
+* about this code
+  This is just all my personal solutions to [[P-99]] , translations of P-99 to other languages, and other sorts of "homework" solutions. 
+
+* P-99
+  The "original" 99 Prolog Problems by Werner Hett
+  http://sites.google.com/site/prologsite/prolog-problems
+  [[http://www.ic.unicamp.br/~meidanis/courses/mc336/2009s2/prolog/problemas/index.html][Another mirror]]
+
