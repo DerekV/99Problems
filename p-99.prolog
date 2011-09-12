@@ -48,17 +48,15 @@ my_length([F|R],Y):-
 %% Problem 5
 %% Reverse a list
 
-% if normal is empty, than Reversed is Accumulator (we're done)
-my_rev_accumulator([],Reversed,Reversed).
-
-my_rev_accumulator([First|Rest],Reversed,Accumulator):-
-	my_rev_accumulator(Rest,Reversed,[First|Accumulator]).
-
-my_reverse([],[]).
-my_reverse([Lonely],[Lonely]).
-my_reverse([First|[Last]],[Last|[First]]).
+% called normally, start the recursive call with acc set null
 my_reverse(Normal,Reversed):-
-	my_rev_accumulator(Normal,Reversed,[]).
+	my_reverse(Normal,Reversed,[]).
+% if normal is empty, than Reversed is Accumulator (we're done)
+my_reverse([],Reversed,Reversed).
+% otherwise, start (or continue) building the accumulator
+my_reverse([First|Rest],Reversed,Accumulator):-
+	my_reverse(Rest,Reversed,[First|Accumulator]).
+
 
 
 
