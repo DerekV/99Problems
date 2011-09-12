@@ -69,6 +69,7 @@ is_palandrome(X):- my_reverse(X,X).
 my_flatten([],[]).
 my_flatten([Xf|Xr],Y):-
 	is_list(Xf),
+	!,
 	my_flatten(Xf,Squished),
 	append(Squished,Xr,New),
 	my_flatten(New,Y).
