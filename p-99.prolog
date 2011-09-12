@@ -57,7 +57,23 @@ my_reverse([],Reversed,Reversed).
 my_reverse([First|Rest],Reversed,Accumulator):-
 	my_reverse(Rest,Reversed,[First|Accumulator]).
 
+%% Problem 6
+%% discover palindromes
+
+is_palandrome(X):- my_reverse(X,X).
 
 
-
+%% Problem 7
+% solution using hint 
+%  -"Use the predefined predicates is_list/1 and append/3"
+my_flatten([],[]).
+my_flatten([Xf|Xr],Y):-
+	is_list(Xf),
+	my_flatten(Xf,Squished),
+	append(Squished,Xr,New),
+	my_flatten(New,Y).
+my_flatten([First|Xr],[First|Yr]):-
+	not(is_list(Xf)),
+	my_flatten(Xr,Yr).
+	
 	
