@@ -1,10 +1,10 @@
 
 %% not part of any problem
 starts_same([],[]).
-starts_same(X,[]).
-starts_same([],X).
-starts_same([First|Xr],[First|Yr]):-
-	starts_same(Xr,Yr).
+starts_same(_,[]).
+starts_same([],_).
+starts_same([First|XRest],[First|YRest]):-
+	starts_same(XRest,YRest).
 
 
 is_square(0,0).
@@ -18,20 +18,20 @@ is_sum(X,Y,Z) :-
 %% Problem 1
 
 my_last([X],X).
-my_last([F|R],X):-
+my_last([_|R],X):-
 	my_last(R,X).
 
 %% Problem 2
 
 %my_secondlast([X],[]).
-my_secondlast([F|[X|[L]]],X).
-my_secondlast([F|R],X):-
+my_secondlast([_|[X|[_]]],X).
+my_secondlast([_|R],X):-
 	my_secondlast(R,X).
 
 %% Problem 3 
 
-element_at(1,[F|R],F).
-element_at(Z,[F|R],Result):-
+element_at(1,[F|_],F).
+element_at(Z,[_|R],Result):-
 	Z > 1,
 	X is Z-1,
 	element_at(X,R,Result).
@@ -40,8 +40,8 @@ element_at(Z,[F|R],Result):-
 % length of list
 
 my_length([],0).
-my_length([F],1).
-my_length([F|R],Y):-
+my_length([_],1).
+my_length([_|R],Y):-
 	my_length(R,Z),
 	Y is Z+1.
 
