@@ -78,3 +78,18 @@ my_flatten([First|Xr],[First|Yr]):-
 	my_flatten(Xr,Yr).
 	
 	
+%% Problem 8
+% eliminate consecutive elements
+
+compress([Duplicate|[Duplicate|Rest]],Result):-
+	compress([Duplicate|Rest], Result).
+compress([First|[Second|Rest]],Result):-
+	not(First = Second),
+	compress([Second|Rest],New),
+	append([First],New,Result).
+
+% handle the trival cases cleanly
+% (otherwise they just result in false)
+
+compress([X],[X]).
+compress([],[]).
