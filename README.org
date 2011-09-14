@@ -7,3 +7,8 @@
   http://sites.google.com/site/prologsite/prolog-problems
   [[http://www.ic.unicamp.br/~meidanis/courses/mc336/2009s2/prolog/problemas/index.html][Another mirror]]
 
+* L-99
+  Common Lisp Problems
+  This list was from
+  http://www.ic.unicamp.br/~meidanis/courses/mc336/2006s2/funcional/L-99_Ninety-Nine_Lisp_Problems.html
+  
