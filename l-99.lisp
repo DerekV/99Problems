@@ -40,3 +40,46 @@
       (+ 1 
 	 (my-length (cdr lst)))
       0))
+
+;; Problem 5
+; reverse a list
+
+
+(defun my-reverse1 (lst)
+  (if lst
+      (append 
+       (my-reverse (cdr lst)) 
+       (list (car lst)))))
+
+;; with an accumulator
+(defun my-reverse2 (lst &optional (acc '()))
+  (if lst
+      (my-reverse2 (cdr lst) 
+		   (cons (car lst) acc))
+      acc))
+
+; a third way involving keeping a refernce to the last cons
+; of the reversed list as well as the first?
+; perhaps with multiple value bind
+; and/or reversing direction of cons association on the return pass
+
+
+(setf my-reverse #'my-reverse2)
+
+;; Problem 6
+;       discover palindrome
+(defun is-palindrome (lst)
+  (equal lst (my-reverse lst)))
+
+
+;; Problem 7
+; Flatten a nested list structure
+(defun my-flatten (X)
+  (if X
+      (if (listp X)
+	  (if (listp (car X))
+	     (append (my-flatten (car X)) (my-flatten (cdr X)))
+	     (cons (car X) (my-flatten (cdr X))))
+	  X)))
+	    
+		     
