@@ -82,4 +82,34 @@
 	     (cons (car X) (my-flatten (cdr X))))
 	  X)))
 	    
-		     
+;; Problem 8 
+; Eliminate consecutive duplicates of list elements.
+(defun compress (X) 
+  (if X 
+      (if (equal (car X) (cadr X))
+	  (compress (cdr X))
+	  (cons (car X) (compress (cdr X))))))
+
+;; Problem 9
+; Pack consecutive duplicates of list elements into sublists
+(defun pack (X)
+  (if X 
+      (let ((f (car X)))
+	(if (listp f)
+	    (if (equal (car f) (cadr X))
+		(let ((p (cons (cadr X) f)))
+		  (pack (cons p (cddr X))))
+		(cons f (pack (cdr X))))
+	    (pack (cons (cons f '()) (cdr X)))))))
+	    
+; (there has to be a cleaner way)
+
+;; Problem 10 
+; Run-length encoding of a list
+
+; cheap way
+(defun RLE-1 (X)
+    (mapcar (lambda (lst)
+	      `(,(my-length lst) ,(car lst)))
+	    (pack X)))
+ 
