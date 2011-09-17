@@ -107,9 +107,41 @@
 ;; Problem 10 
 ; Run-length encoding of a list
 
-; cheap way
-(defun RLE-1 (X)
+; lazy way
+(defun rle-encode (X)
     (mapcar (lambda (lst)
 	      `(,(my-length lst) ,(car lst)))
 	    (pack X)))
  
+;; Problem 11
+; lazy way
+(defun rle-encode-modified (X)
+    (mapcar (lambda (lst)
+		   (if (equal 1 (car lst))
+		       (cadr lst)
+		       lst))
+	    (rle-encode X)))
+
+;; Problem 12 
+(defun rle-decode (input)
+  (if input
+      (let ((f (car input))
+	    (r (rle-decode (cdr input)))) 
+	 (if (listp f)
+	     (append 
+	      (loop repeat (car f) collect (cadr f))
+	      r)
+	     (cons f r)))))
+	 
+
+;; Problem 13
+; ?
+
+
+;; Problem 14
+(defun duplicate-2 (input)
+  (if input
+      (cons (car input)
+	    (cons 
+	     (car input)
+	     (duplicate-2 (cdr input))))))
